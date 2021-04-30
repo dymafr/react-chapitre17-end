@@ -7,7 +7,6 @@ export const TRY_ADD_TODO = 'try add todo';
 export const ADD_TODO_SUCCESS = 'add todo success';
 export const ADD_TODO_ERROR = 'add todo error';
 
-
 export const REQUEST_TODO = 'request todo';
 export const FETCH_TODO = 'fetch todo';
 export const FETCH_TODO_SUCCESS = 'fetch todo success';
@@ -15,64 +14,61 @@ export const FETCH_TODO_ERROR = 'fetch todo error';
 
 export const tryAddTodo = (todo) => {
   return (dispatch, getState) => {
-    const todos = [ ...getState().todos.data, todo ];
+    const todos = [...getState().todos.data, todo];
     return apiFirebase.put('todos.json', todos).then(
-      response => dispatch(addTodoSuccess(todo)),
-      error => dispatch(addTodoError(error))
-    )
-
-  }
-}
+      (response) => dispatch(addTodoSuccess(todo)),
+      (error) => dispatch(addTodoError(error))
+    );
+  };
+};
 
 export const addTodoSuccess = (todo) => {
   return {
     type: ADD_TODO_SUCCESS,
-    todo
-  }
-}
+    todo,
+  };
+};
 
 export const addTodoError = (error) => {
   return {
     type: ADD_TODO_ERROR,
-    error
-  }
-} 
-
+    error,
+  };
+};
 
 export const deleteTodo = (index) => {
   return {
     type: DELETE_TODO,
-    index
-  }
-}
-
+    index,
+  };
+};
 
 export const toggleTodo = (index) => {
   return {
     type: TOGGLE_TODO,
-    index
-  }
-}
+    index,
+  };
+};
 
 export const requestTodo = () => {
   return {
-    type: REQUEST_TODO
-  }
-}
+    type: REQUEST_TODO,
+  };
+};
 
 export const fetchTodoSuccess = (todos) => {
   return {
     type: FETCH_TODO_SUCCESS,
-    todos
-  }
-}
+    todos,
+  };
+};
 
 export const fetchTodoError = (error) => {
   return {
     type: FETCH_TODO_ERROR,
-    error
-  }
-}
+    error,
+  };
+};
 
 export const fetchTodo = () => {
   return (dispatch) => {
@@ -85,8 +81,6 @@ export const fetchTodo = () => {
       (error) => {
         dispatch(fetchTodoError(error));
       }
-    )
-  }
-}
-
-
+    );
+  };
+};

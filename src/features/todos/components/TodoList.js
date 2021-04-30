@@ -14,26 +14,30 @@ class TodoList extends Component {
     const { todos, deleteTodo, toggleTodo } = this.props;
     return (
       <ul className="list-group">
-        { todos && todos.map( (t, i) => (
-          <TodoItem 
-            key={ t.name } 
-            todo={ t } 
-            deleteTodo={ () => deleteTodo(i) } 
-            toggleTodo={ () => toggleTodo(i) }
-          />
-        )) }
+        {todos &&
+          todos.map((t, i) => (
+            <TodoItem
+              key={t.name}
+              todo={t}
+              deleteTodo={() => deleteTodo(i)}
+              toggleTodo={() => toggleTodo(i)}
+            />
+          ))}
       </ul>
-    )
+    );
   }
 }
 
-export default connect((state, ownProps) => {
-  const filter = ownProps.match.params.filter;
-  return {
-    todos: filteredTodoDataSelector(state, filter)
+export default connect(
+  (state, ownProps) => {
+    const filter = ownProps.match.params.filter;
+    return {
+      todos: filteredTodoDataSelector(state, filter),
+    };
+  },
+  {
+    toggleTodo,
+    deleteTodo,
+    fetchTodo,
   }
-}, {
-  toggleTodo,
-  deleteTodo,
-  fetchTodo
-})(TodoList);
+)(TodoList);
