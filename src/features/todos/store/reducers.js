@@ -32,14 +32,14 @@ export const todosReducer = (
     case actions.DELETE_TODO: {
       return {
         ...state,
-        data: state.data.filter((t, i) => i !== action.index),
+        data: state.data.filter((t) => t.id !== action.id),
       };
     }
     case actions.TOGGLE_TODO: {
       return {
         ...state,
-        data: state.data.map((t, i) =>
-          i === action.index ? { ...t, done: !t.done } : t
+        data: state.data.map((t) =>
+          t.id === action.id ? { ...t, done: !t.done } : t
         ),
       };
     }

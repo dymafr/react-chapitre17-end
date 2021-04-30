@@ -15,12 +15,12 @@ class TodoList extends Component {
     return (
       <ul className="list-group">
         {todos &&
-          todos.map((t, i) => (
+          todos.map((t) => (
             <TodoItem
               key={t.name}
               todo={t}
-              deleteTodo={() => deleteTodo(i)}
-              toggleTodo={() => toggleTodo(i)}
+              deleteTodo={() => deleteTodo(t.id)}
+              toggleTodo={() => toggleTodo(t.id)}
             />
           ))}
       </ul>

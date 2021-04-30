@@ -36,17 +36,17 @@ export const addTodoError = (error) => {
   };
 };
 
-export const deleteTodo = (index) => {
+export const deleteTodo = (id) => {
   return {
     type: DELETE_TODO,
-    index,
+    id,
   };
 };
 
-export const toggleTodo = (index) => {
+export const toggleTodo = (id) => {
   return {
     type: TOGGLE_TODO,
-    index,
+    id,
   };
 };
 
